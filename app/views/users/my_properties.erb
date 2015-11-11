@@ -12,7 +12,11 @@
 
   <a href="/properties/<%=p.id%>/edit"><button type="button" name="pro_edit">Edit your entry</button></a>
 
-  <a href="/properties/<%=p.id%>/delete"><button type="button" name="logout_button">Delete</button></a>  
+  <a href="/properties/<%=p.id%>/delete"><button type="button" name="logout_button">Delete</button></a>
+
+<p><i><a href="/properties/<%=p.id%>"><%= Booking.where(property_id: p.id).count %> booking(s)</a></i></p>
+
 
 <p>--------------------------------------------------------------------------------</p>
 <%end%>
+

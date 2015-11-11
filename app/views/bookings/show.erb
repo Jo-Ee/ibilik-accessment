@@ -1,1 +1,21 @@
-Show your bookings
+<h2>You have booked the following property:</h2>
+<p>--------------------------------------------------------------------------------</p>
+
+<h2><%= @property.property_name %></h2>
+
+<p>Posted by: <%= @user.username%></p>
+<p>Located in: <%= @property.location%></p>
+<p>Price: <%= @property.price%>0 </p>
+
+<p>Description: <%= @property.description%></p>
+
+<p>--------------------------------------------------------------------------------</p>	
+
+<p>Your Message:</p>
+<p><%= @booking.message %></p>
+
+  <a href="/bookings/<%= @booking.id %>/edit"><button type="button" name="edit">Edit your booking</button></a>
+
+  <a href="/bookings/<%= @booking.id %>/delete"><button type="button" name="edit">Cancel booking</button></a>
+
+<p>--------------------------------------------------------------------------------</p>	

@@ -1,0 +1,32 @@
+<h2>Book this property:</h2>
+<p>--------------------------------------------------------------------------------</p>
+
+<h2><%= @property.property_name %></h2>
+
+<p>Posted by: <%= @user.username%></p>
+<p>Located in: <%= @property.location%></p>
+<p>Price: <%= @property.price%>0 </p>
+
+<p>Description: <%= @property.description%></p>
+
+<p>--------------------------------------------------------------------------------</p>
+
+
+<div>
+
+<p><b><i>Contact owner to book:</b></i></p>
+	<p><i><%= @error_message %></i></p>
+	<form action="/properties/<%= @property.id %>/bookings" method="post">
+
+		<p>&nbsp Send Message to Owner: <textarea name="booking[message]" row="5" cols="30" placeholder="Message property owner"></textarea></p>
+
+		<input type="hidden" name="booking[property_id]" value="<%= @property.id%>">
+
+		<input type="hidden" name="booking[user_id]" value="<%= current_user.id%>">
+
+		<input type="hidden" name="booking[booking_session]" value="<%= @property.id%>,<%= current_user.id%>">
+
+		<p>&nbsp <input type="submit" value="Book Property"></p>
+
+	</form>
+</div>

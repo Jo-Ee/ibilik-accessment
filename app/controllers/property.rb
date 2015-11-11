@@ -19,6 +19,7 @@ end
 
 get '/properties/:id' do
 	@property = Property.find(params[:id])
+	@bookings = Booking.where(property_id: params[:id])
 	@user = User.find_by(id: @property.user_id)
 	erb :'properties/show'
 end
@@ -43,5 +44,63 @@ end
 get '/properties/:id/delete' do
 	@property = Property.find(params[:id])
 	@property.destroy
+	redirect to '/'
+end
+
+
+#************************************************
+
+#new booking
+get '/properties/:id/bookings/new' do
+	@property = Property.find(params[:id])
+	@user = User.find_by(id: @property.user_id)
+	@message = "Message cannot be empty"
+	erb :'bookings/new'
+end
+
+#submit booking
+post '/properties/:id/bookings' do
+	@property = Property.find(params[:id])
+	@booking = Booking.new(params[:booking])
+
+	if @booking.save
+		redirect to "/bookings/#{@booking.id}"
+	else
+		@error_message = "No input.Please enter your message"
+		@user = User.find_by(id: @property.user_id)
+		erb :'bookings/new'	
+	end
+end
+
+#view booking
+get '/bookings/:id' do
+	@booking = Booking.find_by(id: params[:id])
+	@property = Property.find(@booking.property_id)
+	@user = User.find_by(id: @property.user_id)
+	erb :'bookings/show'
+end
+
+#edit booking
+get '/bookings/:id/edit' do
+	@booking = Booking.find_by(id: params[:id])
+	@property = Property.find(@booking.property_id)
+	@user = User.find_by(id: @property.user_id)
+	erb :'bookings/edit'
+end
+
+#update booking
+post '/bookings/:id' do
+	@booking = Booking.find(params[:id])
+	if @booking.update(params[:booking])
+		redirect to "/bookings/#{@booking.id}"
+	else
+		erb :'bookings/edit'
+	end
+end
+
+#delete booking
+get '/bookings/:id/delete' do
+	@booking = Booking.find(params[:id])
+	@booking.destroy
 	redirect to '/'
 end

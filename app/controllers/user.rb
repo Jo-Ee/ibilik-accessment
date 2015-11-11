@@ -40,8 +40,22 @@ get '/logout' do
 	redirect to '/'
 end
 
+
+#*******************************************
+
 #view only user's property
 get '/my_properties' do
 	@my_properties = Property.where(user_id: current_user.id)
+	
 	erb :'users/my_properties'
+end
+
+#*******************************************
+
+#view user's booking
+
+get '/my_bookings' do
+	@my_bookings = Booking.where(user_id: current_user.id)
+	erb :'users/my_bookings'
+
 end

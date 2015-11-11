@@ -9,11 +9,21 @@
 
 <p>Description: <%= @property.description%></p>
 
-<p>--------------------------------------------------------------------------------</p>
-
   <a href="/properties/<%=@property.id%>/edit"><button type="button" name="pro_edit">Edit your entry</button></a>
 
   <a href="/properties/<%=@property.id%>/delete"><button type="button" name="logout_button">Delete</button></a>
+
+<p>--------------------------------------------------------------------------------</p>
+<h4>Bookings:</h4>
+
+<% @bookings.each do |b| %>
+	<p>&nbsp &nbsp <%= b.message%></p>
+	<% user = User.find(b.user_id) %>
+	<p>&nbsp &nbsp &nbsp Posted by: <%= user.username%></p>
+
+<p>***********************************</p>
+<% end %>
+
 
 
 

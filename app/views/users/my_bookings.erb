@@ -1,0 +1,26 @@
+<h2>My Bookings</h2>
+<p>--------------------------------------------------------------------------------</p>
+
+<% @my_bookings.each do |b| %>
+	<% @prop_id = b.property_id %>
+	<% @p = Property.find_by(id: @prop_id)%>
+	<% @user = User.find(@p.user_id)%>
+
+<h2><%= @p.property_name %></h2>
+<p>Posted by: <%= @user.username %></p>
+<p>Located in: <%= @p.location%></p>
+<p>Price: <%= @p.price%>0 </p>
+
+<p>Description: <%= @p.description%></p>
+<p>********************</p>	
+
+<p>Your Message:</p>
+<p><%= b.message %></p>
+
+
+  <a href="/bookings/<%= b.id %>/edit"><button type="button" name="edit">Edit your booking</button></a>
+
+  <a href="/bookings/<%= b.id %>/delete"><button type="button" name="edit">Cancel booking</button></a> 
+
+<p>--------------------------------------------------------------------------------</p>
+<%end%>

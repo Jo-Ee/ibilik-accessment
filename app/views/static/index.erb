@@ -21,8 +21,13 @@
 
 	<%else%>
 
-		 <a href="/"><button type="button" name="book">Book now</button></a>
+		<% @booking_session = "#{p.id},#{current_user.id}"%>
 
+		<% if !Booking.find_by(booking_session: @booking_session)%>
+
+		 <a href="/properties/<%=p.id%>/bookings/new"><button type="button" name="book">Book now</button></a>
+
+		<% end%>
 	<%end%>
 <%end%>
 <p>--------------------------------------------------------------------------------</p>
