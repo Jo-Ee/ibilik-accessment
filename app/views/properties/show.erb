@@ -1,0 +1,22 @@
+<h2>Your property advertisement</h2>
+<p>--------------------------------------------------------------------------------</p>
+
+<h2><%= @property.property_name %></h2>
+
+<p>Posted by: <%= @user.username%></p>
+<p>Located in: <%= @property.location%></p>
+<p>Price: <%= @property.price%>0 </p>
+
+<p>Description: <%= @property.description%></p>
+
+<p>--------------------------------------------------------------------------------</p>
+
+  <a href="/properties/<%=@property.id%>/edit"><button type="button" name="pro_edit">Edit your entry</button></a>
+
+  <a href="/properties/<%=@property.id%>/delete"><button type="button" name="logout_button">Delete</button></a>
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+<h2>Edit Your Property</h2>
+<p1>-----------------------------------------------------------------</p1>
+ 
+
+<p><%= @error_message %></p>
+<div>
+	<form action="/properties/<%= @property.id%>" method="post">
+
+		<p>&nbsp Property Name: <input type="text" name="property[property_name]" placeholder="Short description" value="<%=@property.property_name%>"></p>
+
+		<p>&nbsp Location: <input type="text" name="property[location]" placeholder="Location" value="<%=@property.location%>"></p>	
+
+		<p>&nbsp Description: <textarea name="property[description]" row="5" cols="30"><%= @property.description %></textarea></p>
+
+		<p>&nbsp Price: RM <input type="text" name="property[price]" placeholder="Price" value="<%=@property.price%>"></p>
+
+		<input type="hidden" name="property[user_id]" value="<%= current_user.id%>">
+
+		<p>&nbsp <input type="submit" value="Update"></p>
+
+	</form>
+</div>

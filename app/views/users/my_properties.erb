@@ -1,0 +1,18 @@
+<h2>My Properties</h2>
+<p1>-----------------------------------------------------------------</p1>
+
+<% @my_properties.each do |p| %>
+
+<h2><%= p.property_name %></h2>
+
+<p>Located in: <%= p.location%></p>
+<p>Price: <%= p.price%>0 </p>
+
+<p>Description: <%= p.description%></p>
+
+  <a href="/properties/<%=p.id%>/edit"><button type="button" name="pro_edit">Edit your entry</button></a>
+
+  <a href="/properties/<%=p.id%>/delete"><button type="button" name="logout_button">Delete</button></a>  
+
+<p>--------------------------------------------------------------------------------</p>
+<%end%>
